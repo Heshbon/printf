@@ -1,11 +1,9 @@
 #include "main.h"
-
 /**
  * _strlen - a function that prints a string value
  * @s: the string pointer
  * Return: 0
  */
-
 int _strlen(char *s)
 {
 	int a;
@@ -14,7 +12,6 @@ int _strlen(char *s)
 		;
 	return (a);
 }
-#include "main.h"
 /**
  * _strlen2 - a function that prints a string value
  * @s: the string pointer
