@@ -25,7 +25,7 @@ int _printf(const char *format, ...)
 		if (format[a] != '%')
 		{
 			printf_c(format[a]);
-			length++;		
+			length++;
 		}
 		else if (format[a + 1] == 'd' || format[a + 1] == 'i')
 		{
