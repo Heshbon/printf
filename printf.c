@@ -48,6 +48,8 @@ int _printf(const char *format, ...)
 		else if (format[a + 1] == '%')
 		{
 			printf_c('%');
+			length++;
+			a++;
 		}
 	}
 	va_end(n);
