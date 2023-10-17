@@ -8,6 +8,7 @@
 int _putchar(char c);
 int printf_c(char s);
 int putstring(char *b);
+int printf_d_i(int val);
 int _printf(const char *format, ...);
 
 #endif

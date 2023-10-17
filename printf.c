@@ -1,4 +1,6 @@
+#include <stdio.h>
 #include "main.h"
+
 
 /**
  * _printf - a function that prints a stdoutput
@@ -11,18 +13,25 @@ int _printf(const char *format, ...)
 {
 	int a;
 	va_list n;
-	int length, y = 0;
+	int length = 0, y = 0;
 
 	if (!format || (format[0] == '%' && format[1] == '\0') || format == NULL)
 	{
 		return (-1);
 	}
 	va_start(n, format);
-	for (a = 0; format && format[a] != '\0'; a++)
+	for (a = 0; format[a] != '\0'; a++)
 	{
 		if (format[a] != '%')
 		{
 			printf_c(format[a]);
+			length++;		
+		}
+		else if (format[a + 1] == 'd' || format[a + 1] == 'i')
+		{
+			y = printf_d_i(va_arg(n, int));
+			a++;
+			length += (y - 1);
 		}
 		else if (format[a + 1] == 'c')
 		{
@@ -39,7 +48,6 @@ int _printf(const char *format, ...)
 		{
 			printf_c('%');
 		}
-		length += 1;
 	}
 	va_end(n);
 	return (length);

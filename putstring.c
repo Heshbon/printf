@@ -8,14 +8,15 @@
 
 int putstring(char *b)
 {
-	int a = 0;
+	int a = 0, i = 0;
 
 	if (b)
 	{
 		for (a = 0; b[a] != '\0'; a++)
 		{
 			printf_c(b[a]);
+			i++;
 		}
 	}
-	return (a);
+	return (i);
 }
