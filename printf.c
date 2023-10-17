@@ -1,13 +1,11 @@
 #include <stdio.h>
 #include "main.h"
-
 /**
  * _printf - a function that prints a stdoutput
  * @format: the format specifier
  * Return: the number of characters printed
  * (excluding the null byte used to end output strings)
  */
-
 int _printf(const char *format, ...)
 {
 	int a;
@@ -27,14 +25,12 @@ int _printf(const char *format, ...)
 			length++;
 		}
 		else if (format[a + 1] == 'd' || format[a + 1] == 'i')
-		{
-			y = printf_d_i(va_arg(n, int));
+		{	y = printf_d_i(va_arg(n, int));
 			length += y;
 			a++;
 		}
 		else if (format[a + 1] == 'c')
-		{
-			printf_c(va_arg(n, int));
+		{	printf_c(va_arg(n, int));
 			length++;
 			a++;
 		}
@@ -45,8 +41,7 @@ int _printf(const char *format, ...)
 			a++;
 		}
 		else if (format[a + 1] == '%')
-		{
-			printf_c('%');
+		{	printf_c('%');
 			length++;
 			a++;
 		}
