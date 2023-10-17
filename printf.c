@@ -9,32 +9,41 @@
 
 int _printf(const char *format, ...)
 {
-	convert_match i[] = {
-		{"%c", printf_c}, {"%s", printf_string}, {"%%", printf_37},
-	};
-	int a = 0, k = 0;
+	int a;
 	va_list n;
-	int p;
+	int length = 0;
 
-	va_start(n, format);
-	if (format == NULL || (format[0] == '%' && format[a] == '\0'))
-		return (-1);
-	while (format[a] != '\0')
+	if (!format || (format[0] == '%' && format[1] == '\0') || format == NULL)
 	{
-		p = 2;
-		while (p >= 0)
+		return (-1);
+	}
+	va_start(n, format);
+	for (a = 0; format && format[a] != '\0'; a++)
+	{
+		if (format[a] != '%')
 		{
-			if (i[p].id[0] == format[a] && i[p].id[1] == format[a + 1])
-			{
-				k = k + i[p].f(n);
-				a = a + 2;
-			}
-			p--;
+			print_c(format[a]);
+			length++;
 		}
-		_putchar(format[a]);
-		a++;
-		k++;
+		else
+		{
+			a++;
+			if (format[a] == 'c')
+			{
+				print_c(va_arg(n, int));
+				length++;
+			}
+			else if (format[a] == 's')
+			{
+				length += printf_str(va_arg(n, char *));
+			}
+			else if (format[a] == '%')
+			{
+				print_c('%');
+				length++;
+			}
+		}
 	}
 	va_end(n);
-	return (k);
+	return (length);
 }
