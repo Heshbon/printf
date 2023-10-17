@@ -30,19 +30,20 @@ int _printf(const char *format, ...)
 		else if (format[a + 1] == 'd' || format[a + 1] == 'i')
 		{
 			y = printf_d_i(va_arg(n, int));
+			length += y;
 			a++;
-			length += (y - 1);
 		}
 		else if (format[a + 1] == 'c')
 		{
 			printf_c(va_arg(n, int));
+			length++;
 			a++;
 		}
 		else if (format[a + 1] == 's')
 		{
 			y = putstring(va_arg(n, char *));
+			length += y;
 			a++;
-			length += (y - 1);
 		}
 		else if (format[a + 1] == '%')
 		{
@@ -50,5 +51,5 @@ int _printf(const char *format, ...)
 		}
 	}
 	va_end(n);
-	return (length);
+	return (length - 1);
 }
