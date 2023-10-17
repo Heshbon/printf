@@ -25,8 +25,8 @@ int _printf(const char *format, ...)
 			length++;
 		}
 		else if (format[a + 1] == 'd' || format[a + 1] == 'i')
-		{	y = printf_d_i(va_arg(n, int));
-			length += y;
+		{
+			length += printf("d", va_arg(n, int));
 			a++;
 		}
 		else if (format[a + 1] == 'c')
