@@ -43,7 +43,6 @@ int printf_d_i(int val)
 
 	return (int_len);
 }
-
 /**
  * int_len_helper - helper function to determine the length of int
  * @x: the integer input
