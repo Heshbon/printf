@@ -3,7 +3,7 @@
 /**
  * putstring - a function that prints a string value
  * @s: the string character
- * Return: character byte
+ * Return: the number of characters printed
  */
 
 int putstring(char *s)
