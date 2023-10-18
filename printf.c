@@ -7,82 +7,38 @@
  */
 int _printf(const char *format, ...)
 {
-	char *s;
 	int a;
 	va_list n;
-	int length = 0;
+	int length, y  = 0;
 
-	if (format == NULL)
+	if (format == NULL  || (format[0] == '%' && format[1] == '\0'))
 	{
 		return (-1);
 	}
 	va_start(n, format);
-	while (*format)
+	for (a = 0; format && format[a] != '\0'; a++)
 	{
-		if (*format == '%')
+		if (format[a] != '%')
 		{
-			format++;
-		
-			if (*format == 'd' || *format == 'i')
-		
-			{
-				length += printf("%d", (va_arg(n, int)));
-			
-		
-			}
-		
-			else if (*format == 'c')
-		
-			{
-				putchar(va_arg(n, int));
-			
-				length++;
-			
-				a++;
-		
-			}
-		
-			else if (*format  == 's')
-		
-			{
-			
-				s = va_arg(n, char *);
-			
-				while (*s)
-			
-				{
-				
-					putchar(*s);
-				
-					a++;
-				
-					length++;
-			
-				}
-
-		
-			}
-		
-			else if (*format == '%')
-		
-			{
-				putchar('%');
-			
-				length++;
-			
-				a++;
-			}
-		else
-		{
-			putchar(*format);
-			length++;
+			printf_c(format[a]);
 		}
-		format++;
+		else if (format[a + 1] == 'c')
+		{
+			printf_c(va_arg(n, int));
+			a++;
+		}
+		else if (format[a + 1] == 's')
+		{
+			y = putstring(va_arg(n, char *));
+			a++;
+			length += (y - 1);
+		}
+		else if (format[a + 1] == '%')
+		{
+			printf_c('%');
+		}
+		length += 1;
 	}
-	
-	}
-
 	va_end(n);
 	return (length);
-
 }
