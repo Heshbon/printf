@@ -1,6 +1,4 @@
-#include <stdio.h>
 #include "main.h"
-#include <stdarg.h>
 /**
  * _printf - a function that prints a stdoutput
  * @format: the format specifier
