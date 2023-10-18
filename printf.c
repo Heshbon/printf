@@ -24,6 +24,18 @@ int _printf(const char *format, ...)
 		{
 			printf_c(format[a]);
 		}
+		else if (format[a + 1] == 'd')
+		{
+			printf_c(va_arg(n, int));
+			length++;
+			a++;
+		}
+		else if (format[a + 1] == 'i')
+		{
+			printf_c(va_arg(n, int));
+			length++;
+			a++;
+		}
 		else if (format[a + 1] == 'c')
 		{
 			printf_c(va_arg(n, int));
