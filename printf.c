@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "main.h"
+#include <stdarg.h>
 /**
  * _printf - a function that prints a stdoutput
  * @format: the format specifier
@@ -8,6 +9,7 @@
  */
 int _printf(const char *format, ...)
 {
+	char *s;
 	int a;
 	va_list n;
 	int length = 0, y = 0;
@@ -21,7 +23,7 @@ int _printf(const char *format, ...)
 	{
 		if (format[a] != '%')
 		{
-			printf_c(format[a]);
+			putchar(*format);
 			length++;
 		}
 		else if (format[a + 1] == 'd' || format[a + 1] == 'i')
@@ -30,18 +32,22 @@ int _printf(const char *format, ...)
 			a++;
 		}
 		else if (format[a + 1] == 'c')
-		{	printf_c(va_arg(n, int));
+		{	putchar(va_arg(n, int));
 			length++;
 			a++;
 		}
 		else if (format[a + 1] == 's')
 		{
-			y = putstring(va_arg(n, char *));
-			length += y;
-			a++;
+			s = va_arg(n, char *);
+			while (*s)
+			{
+				putchar(*s);
+				a++;
+				y++;
+			}
 		}
 		else if (format[a + 1] == '%')
-		{	printf_c('%');
+		{	putchar('%');
 			length++;
 			a++;
 		}

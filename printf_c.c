@@ -1,12 +1,17 @@
 #include "main.h"
-
+#include <stdarg.h>
+#include <stdio.h>
 /**
  * printf_c - a function that prints a character value
- * @s: the character input
+ * @val: the character input
  * Return: return 1
  */
 
-int printf_c(char s)
+int printf_c(va_list val)
 {
-	return (write(1, &s, 1));
+	char ptr;
+
+	ptr = va_arg(val, int);
+	_putchar(ptr);
+	return (1);
 }

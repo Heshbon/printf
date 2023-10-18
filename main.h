@@ -6,7 +6,7 @@
 #include <stdlib.h>
 
 int _putchar(char c);
-int printf_c(char s);
+int printf_c(va_list val);
 int putstring(char *b);
 int printf_i(va_list b);
 int printf_d(va_list b);
