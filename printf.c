@@ -9,7 +9,7 @@
 
 int _printf(const char *format, ...)
 {
-	int a;
+	unsigned int a;
 	va_list n;
 	int length, y = 0;
 
@@ -18,23 +18,11 @@ int _printf(const char *format, ...)
 		return (-1);
 	}
 	va_start(n, format);
-	for (a = 0; format && format[a] != '\0'; a++)
+	for (a = 0; format[a] != '\0'; a++)
 	{
 		if (format[a] != '%')
 		{
 			printf_c(format[a]);
-		}
-		else if (format[a + 1] == 'd')
-		{
-			printf_c(va_arg(n, int));
-			length++;
-			a++;
-		}
-		else if (format[a + 1] == 'i')
-		{
-			printf_c(va_arg(n, int));
-			length++;
-			a++;
 		}
 		else if (format[a + 1] == 'c')
 		{
