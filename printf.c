@@ -29,7 +29,7 @@ int _printf(const char *format, ...)
 		
 			{
 			
-				length += printf("d", va_arg(n, int));
+				length += printf("%d", (va_arg(n, int)));
 			
 				a++;
 		
