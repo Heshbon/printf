@@ -12,45 +12,48 @@ int _printf(const char *format, ...)
 	char *s;
 	int a;
 	va_list n;
-	int length = 0, y = 0;
+	int length = 0;
 
 	if (!format || (format[0] == '%' && format[1] == '\0') || format == NULL)
 	{
 		return (-1);
 	}
 	va_start(n, format);
-	for (a = 0; format[a] != '\0'; a++)
+	while (*format)
 	{
-		if (format[a] != '%')
+		if (*format != '%')
 		{
 			putchar(*format);
 			length++;
 		}
-		else if (format[a + 1] == 'd' || format[a + 1] == 'i')
+		format++;
+	       
+		if (*format == 'd' || *format == 'i')
 		{
 			length += printf("d", va_arg(n, int));
 			a++;
 		}
-		else if (format[a + 1] == 'c')
+		else if (*format == 'c')
 		{	putchar(va_arg(n, int));
 			length++;
 			a++;
 		}
-		else if (format[a + 1] == 's')
+		else if (*format  == 's')
 		{
 			s = va_arg(n, char *);
 			while (*s)
 			{
 				putchar(*s);
 				a++;
-				y++;
+				length++;
 			}
 		}
-		else if (format[a + 1] == '%')
+		else if (*format == '%')
 		{	putchar('%');
 			length++;
 			a++;
 		}
+		format++;
 	}
 	va_end(n);
 	return (length);
