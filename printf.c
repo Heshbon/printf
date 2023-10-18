@@ -21,17 +21,13 @@ int _printf(const char *format, ...)
 	{
 		if (*format == '%')
 		{
-		
 			format++;
-	       
 		
 			if (*format == 'd' || *format == 'i')
 		
 			{
-			
 				length += printf("%d", (va_arg(n, int)));
 			
-				a++;
 		
 			}
 		
