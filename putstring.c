@@ -1,8 +1,8 @@
 #include "main.h"
 
 /**
- * putstring - a function that prints string value
- * @s: the string value
+ * putstring - a function that prints a string value
+ * @s: the string character
  * Return: 0
  */
 

@@ -1,17 +1,19 @@
 #include "main.h"
+
 /**
  * _printf - a function that prints a stdoutput
  * @format: the format specifier
  * Return: the number of characters printed
  * (excluding the null byte used to end output strings)
  */
+
 int _printf(const char *format, ...)
 {
 	int a;
 	va_list n;
-	int length, y  = 0;
+	int length, y = 0;
 
-	if (format == NULL  || (format[0] == '%' && format[1] == '\0'))
+	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
 	{
 		return (-1);
 	}
