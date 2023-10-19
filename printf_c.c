@@ -1,14 +1,12 @@
 #include "main.h"
 
 /**
- * printf_c - a function that prints a character value
- * @b: the argument value
- * Return: 1
- *
+ * printf_c - a function that prints a character
+ * @c: the argument value
+ * Return: 0
  */
 
-int printf_c(char b)
+void printf_c(char c)
 {
-	return (write(1, &b, 1));
+	_putchar(c);
 }
-

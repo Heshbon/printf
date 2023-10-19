@@ -2,8 +2,8 @@
 
 /**
  * putstring - a function that prints a string value
- * @s: the string character
- * Return: the number of characters printed
+ * @s: the string to be printed
+ * Return: the length of the string
  */
 
 int putstring(char *s)

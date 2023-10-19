@@ -11,9 +11,9 @@ int _printf(const char *format, ...)
 {
 	unsigned int a;
 	va_list n;
-	int length, y = 0;
+	int b, p = 0;
 
-	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
+	if (!format || (format[0] == '%' && format[1] == '\0') || format == NULL)
 	{
 		return (-1);
 	}
@@ -31,16 +31,17 @@ int _printf(const char *format, ...)
 		}
 		else if (format[a + 1] == 's')
 		{
-			y = putstring(va_arg(n, char *));
+			p = putstring(va_arg(n, char *));
 			a++;
-			length += (y - 1);
+			b += (p - 1);
 		}
 		else if (format[a + 1] == '%')
 		{
 			printf_c('%');
 		}
-		length += 1;
+		b += 1;
 	}
 	va_end(n);
-	return (length);
+	return (b);
 }
+
